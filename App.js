@@ -1,13 +1,17 @@
 import { useState } from 'react';
 import { slides } from './introAppPages/slides';
-import { Button, Image, StyleSheet, Text, View } from 'react-native';
-// Initialize Firebase
-import {
-  SafeAreaView
-} from 'react-native';
+import { Image, StyleSheet, Text, View } from 'react-native';
 import AppIntroSlider from 'react-native-app-intro-slider';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import HomeScreen from './screens/HomeScreen/HomeScreen';
+import LoginScreen from './screens/LoginScreen/LoginScreen';
+import RegisterScreen from './screens/RegisterScreen/RegisterScreen';
+import ButtomTab from './Navigations/ButtomTab';
+const Stack = createNativeStackNavigator();
+
 export default function App() {
-   
+
   const [showRealApp,setShowRealApp]=useState(false);
 
    const _renderItem = ({ item }) => {
@@ -31,18 +35,19 @@ export default function App() {
   return (
    <>
     {
-      showRealApp? ( <SafeAreaView style={styles.container}>
-    <View style={styles.container}>
-      <Text style={styles.titleStyle}>
-        React Native App Intro Slider using AppIntroSlider
-        </Text>
-      <Text style={styles.paragraphStyle}>
-        This will be your screen when you click Skip
-        from any slide or Done button at last
-        </Text>
-        <Button title='Go Back' onPress={() => setShowRealApp(false)}/>
-    </View>
-  </SafeAreaView>):
+      showRealApp? (   
+      <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="Navigator"
+          component={ButtomTab}
+          options={{ headerShown:false }}
+        />
+      </Stack.Navigator>
+      </NavigationContainer>
+
+
+  ):
   (
     <AppIntroSlider
       data={slides}

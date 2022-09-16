@@ -4,8 +4,14 @@
     "slug": "changemindapp",
     "version": "1.0.0",
     "orientation": "portrait",
+     "plugin":["react-native-fbsdk-next",
+     {
+      "appID": "1440359036476238",
+      "clientToken": "8bf039407e362a44712f67f9847088c9",
+      "displayName": "changemymind"
+    }],
     "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
+    "userInterfaceStyle": "light",    
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
