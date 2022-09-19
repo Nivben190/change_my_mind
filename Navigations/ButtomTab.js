@@ -5,6 +5,8 @@ import LoginScreen from '../screens/LoginScreen/LoginScreen';
 import NotificationsScreen from '../screens/NotificationsScreen/NotificationsScreen';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import RegisterScreen from '../screens/RegisterScreen/RegisterScreen';
+import AddArgueScreen from '../screens/AddArgueScreen/AddArgueScreen';
+import UploadScreen from '../screens/AddArgueScreen/UploadScreen';
 const Tab = createBottomTabNavigator();
 
 function ButtomTab() {

@@ -3,12 +3,21 @@ import  {styles} from "./Style"
 
 import { Button, Image, Text, TextInput, View } from 'react-native'
 import { registration } from '../../apo/authFuncs';
-const RegisterScreen = () => {
+const RegisterScreen = ({navigation}) => {
  
  const [email,setEmail] =useState();
  const [password,setPassword] =useState();
- const  registerUser=()=> registration(email,password);
+ const  registerUser=()=> 
+ {
  
+   registration(email,password,navigation);
+    
+     
+  
+   
+ }
+
+ const navigateToLoginPage=()=> navigation.navigate("Login");
   return (
     <View style={styles.profileContainer}>
     <Image style={styles.logo} source={{uri:"https://static.vecteezy.com/system/resources/thumbnails/005/484/042/small/dog-logo-illustration-free-vector.jpg"}}/>
@@ -31,7 +40,7 @@ const RegisterScreen = () => {
       <View style={styles.LoginContainer}>
       <Text style={styles.AlreadyHaveAccountText}>Already have an accout?</Text>
          <View style={styles.LoginButton}>
-         <Button color="yellow" title='Login'  />
+         <Button onPress={navigateToLoginPage} color="yellow" title='Login'  />
          </View>
       </View>
     </View>

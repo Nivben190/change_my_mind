@@ -9,19 +9,19 @@ import { getCurrentUser, signIn } from '../../apo/authFuncs';
 
 const LoginScreen =  ({navigation}) => {
 
-
+function navigateToRegisterPage()
+{
+  navigation.navigate("RegisterScreen");
+}
  
 const [email,setEmail] =useState();
 const [password,setPassword] =useState();
  const  loginUser =async()=>
 {
-  try {
-   signIn(email,password)
+  
+   signIn(email,password,navigation)
         
-  } catch (error) {
-    alert(error)
-    
-  }
+  
   
  
 }
@@ -30,7 +30,7 @@ const [password,setPassword] =useState();
   return (
     <View style={styles.profileContainer}>
     <Image style={styles.logo} source={{uri:"https://static.vecteezy.com/system/resources/thumbnails/005/484/042/small/dog-logo-illustration-free-vector.jpg"}}/>
-      <Text onPress={kkk} style={styles.Title}>Login Here</Text>
+      <Text  style={styles.Title}>Login Here</Text>
       <View style={styles.InputContainer}>
         <Text style={styles.InputDesc}>Email</Text>
         <TextInput 
@@ -42,6 +42,7 @@ const [password,setPassword] =useState();
         <TextInput 
          onChangeText={(textValue)=>setPassword(textValue)}
          secureTextEntry={true} style={styles.Input} />
+        <Text onPress={navigateToRegisterPage} style={styles.NeedToRegistrText}>Not Register? Press Here To Register</Text>
       </View>
       <View style={styles.CreateAccountButton}>
         <Button  onPress={loginUser} color="white" title='Login '  />

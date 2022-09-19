@@ -4,13 +4,15 @@ import "firebase/firestore";
 import { db } from "../firebase";
 import {Alert} from "react-native";
 
-export async function registration(email, password) {
+export async function registration(email, password,navigation) {
     const auth = getAuth();
 
      createUserWithEmailAndPassword(auth, email, password)
      .then((userCredential) => {
        const user = userCredential.user;
-    
+       navigation.navigate("Login")
+
+
      })
      .catch((error) => {
        const errorCode = error.code;
@@ -21,14 +23,13 @@ export async function registration(email, password) {
  
 }
 
-export async function signIn(email, password) {
+export async function signIn(email, password,navigation) {
     const auth = getAuth();
 
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-       
-        
+         navigation.navigate("Home")
       })
       .catch((error) => {
         const errorCode = error.code;

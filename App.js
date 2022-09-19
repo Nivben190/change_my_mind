@@ -8,6 +8,7 @@ import HomeScreen from './screens/HomeScreen/HomeScreen';
 import LoginScreen from './screens/LoginScreen/LoginScreen';
 import RegisterScreen from './screens/RegisterScreen/RegisterScreen';
 import ButtomTab from './Navigations/ButtomTab';
+import AddArgueScreen from './screens/AddArgueScreen/AddArgueScreen';
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -43,6 +44,15 @@ export default function App() {
           component={ButtomTab}
           options={{ headerShown:false }}
         />
+        <Stack.Screen 
+        name="AddArgueScreen"
+        component={AddArgueScreen}
+        options={{ headerShown:false }}/>
+ <Stack.Screen 
+        name="RegisterScreen"
+        component={RegisterScreen}
+        options={{ headerShown:false }}/>
+
       </Stack.Navigator>
       </NavigationContainer>
 

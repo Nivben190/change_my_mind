@@ -8,7 +8,8 @@ export async function  addDiscussions(itemToAdd)
   export async function getDb()
 {
   const querySnapshot = await getDocs(collection(db, "discussions"));
-  querySnapshot.forEach((doc) => {
-    alert(JSON.stringify(doc.data()));
-  });
+  return querySnapshot;
+  // querySnapshot.forEach((doc) => {
+  //   alert(JSON.stringify(doc.data()));
+  // });
 }

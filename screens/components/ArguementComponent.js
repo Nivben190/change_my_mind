@@ -1,14 +1,14 @@
 import React from 'react'
 import { View ,Text} from 'react-native'
 import { StyleSheet } from 'react-native'
-import { Avatar, Button, Card, Title, Paragraph } from 'react-native-paper';
+import {Card } from 'react-native-paper';
 
-const ArguementComponent = () => {
+const ArguementComponent = (props) => {
   return (
     <Card style={styles.arguContainer}> 
-    <Card.Title titleStyle={styles.title} title="🐶 Animals"/>
+    <Card.Title titleStyle={styles.title} title={props.category}/>
     <Card.Content>
-     <Text style={styles.ArgueText}>Dogs Are The Best</Text>
+     <Text style={styles.ArgueText}>{props.title}</Text>
     </Card.Content>
       <View>
 

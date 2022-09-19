@@ -9,7 +9,12 @@
       "appID": "1440359036476238",
       "clientToken": "8bf039407e362a44712f67f9847088c9",
       "displayName": "changemymind"
-    }],
+    },
+    "expo-image-picker",
+    {
+      "photosPermission": "The app accesses your photos to let you share them with your friends."
+    }
+  ],
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",    
     "splash": {

@@ -6,6 +6,13 @@ const styles = StyleSheet.create({
         backgroundColor: "lightblue",
         height: "100%",
     },
+    NeedToRegistrText:
+    {
+         color: "white",
+         fontSize:20,
+         marginTop:"5%"
+
+    },
     logo:
     {
         width: 100,
@@ -28,8 +35,7 @@ const styles = StyleSheet.create({
     
     Input:
     { 
-          textAlign: "end",     
-             
+          textAlign: "end",          
          backgroundColor: "white",
          borderRadius:12,
          border:"none",
@@ -52,7 +58,7 @@ const styles = StyleSheet.create({
     },
     CreateAccountButton:
     {
-        marginTop:30,
+        marginTop:"2%",
         width: "50%",
         marginLeft: "auto",
         marginRight: "auto", 
