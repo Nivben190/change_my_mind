@@ -7,9 +7,11 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import RegisterScreen from '../screens/RegisterScreen/RegisterScreen';
 import AddArgueScreen from '../screens/AddArgueScreen/AddArgueScreen';
 import UploadScreen from '../screens/AddArgueScreen/UploadScreen';
+import { styles } from '../screens/AddArgueScreen/Style';
 const Tab = createBottomTabNavigator();
 
 function ButtomTab() {
+
   return (
     <Tab.Navigator>
       <Tab.Screen name="Home"
@@ -19,6 +21,17 @@ function ButtomTab() {
 
             }} 
        component={HomeScreen} />
+        <Tab.Screen
+        
+         name="AddArgue"
+         
+        options={{   
+          
+              tabBarColor: "#009387",
+              tabBarIcon: () => (<MaterialCommunityIcons color={"blue"} style={styles.AddICon} name="plus-circle" size={40}  />)
+
+            }} 
+       component={AddArgueScreen} />
       <Tab.Screen name="Notifications"
       options={{
               tabBarColor: "#009387",

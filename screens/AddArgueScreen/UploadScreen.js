@@ -9,71 +9,16 @@ import {
   Alert,
   Image
 } from 'react-native';
-import * as ImagePicker from 'expo-image-picker';
-import {storage} from '../../firebase';
-import * as Progress from 'react-native-progress';
 const UploadScreen = () => {
-    const [image, setImage] = useState(null);
-    const [uploading, setUploading] = useState(false);
-    const [transferred, setTransferred] = useState(0);
-    const pickImage = async () => {
-        let result = await ImagePicker.launchImageLibraryAsync({
-         
-        });
-    
-        console.log(result);
-    
-        if (!result.cancelled) {
-          setImage(result.uri);
-        }
-      };
+   
 
-      const uploadImage = async () => {
-        const { uri } = image;
-        const filename = uri.substring(uri.lastIndexOf('/') + 1);
-        const uploadUri = Platform.OS === 'ios' ? uri.replace('file://', '') : uri;
-        setUploading(true);
-        setTransferred(0);
-        const task = storage()
-          .ref(filename)
-          .putFile(uploadUri);
-        // set progress state
-        task.on('state_changed', snapshot => {
-          setTransferred(
-            Math.round(snapshot.bytesTransferred / snapshot.totalBytes) * 10000
-          );
-        });
-        try {
-          await task;
-        } catch (e) {
-          console.error(e);
-        }
-        setUploading(false);
-        Alert.alert(
-          'Photo uploaded!',
-          'Your photo has been uploaded to Firebase Cloud Storage!'
-        );
-        setImage(null);
-      };
+  
   return (
     <SafeAreaView style={styles.container}>
-      <TouchableOpacity style={styles.selectButton} onPress={pickImage}>
-        <Text style={styles.buttonText}>Pick an image</Text>
+      <TouchableOpacity style={styles.selectButton} onPress={chooseFile}>
+        <Text  style={styles.buttonText}>Pick an image</Text>
       </TouchableOpacity>
-      <View style={styles.imageContainer}>
-        {image !== null ? (
-          <Image source={{ uri: image.uri }} style={styles.imageBox} />
-        ) : null}
-        {uploading ? (
-          <View style={styles.progressBarContainer}>
-            <Progress.Bar progress={transferred} width={300} />
-          </View>
-        ) : (
-          <TouchableOpacity style={styles.uploadButton} onPress={uploadImage}>
-            <Text style={styles.buttonText}>Upload image</Text>
-          </TouchableOpacity>
-        )}
-      </View>
+     
     </SafeAreaView>
   )
 }
