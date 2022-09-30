@@ -9,13 +9,36 @@ import {
   Alert,
   Image
 } from 'react-native';
+import * as ImagePicker from 'expo-image-picker';
 const UploadScreen = () => {
    
+ //upload image to firebase with image picker
+  const [image, setImage] = useState(null);
+  const [uploading, setUploading] = useState(false);
 
+  const takePhotoFromCamera = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    if(!result.cancelled) {
+      setImage(result.uri);
+      alert(result.uri);
+    }
+    
+  };
+
+    
+ 
   
   return (
     <SafeAreaView style={styles.container}>
-      <TouchableOpacity style={styles.selectButton} onPress={chooseFile}>
+    <Image size={400} source={{ uri: image }} style={styles.image} />
+      <TouchableOpacity style={styles.selectButton} onPress={takePhotoFromCamera}>
         <Text  style={styles.buttonText}>Pick an image</Text>
       </TouchableOpacity>
      
@@ -27,6 +50,12 @@ const styles = StyleSheet.create({
       flex: 1,
       alignItems: 'center',
       backgroundColor: '#bbded6'
+    },
+    image:
+    {
+
+      width: 400,
+      height: 400,
     },
     selectButton: {
       borderRadius: 5,

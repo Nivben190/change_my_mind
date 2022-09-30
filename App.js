@@ -9,6 +9,7 @@ import LoginScreen from './screens/LoginScreen/LoginScreen';
 import RegisterScreen from './screens/RegisterScreen/RegisterScreen';
 import ButtomTab from './Navigations/ButtomTab';
 import AddArgueScreen from './screens/AddArgueScreen/AddArgueScreen';
+import ClickedArgueScreen from './screens/ClickedArgue/ClickedArgueScreen';
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -53,6 +54,14 @@ export default function App() {
         component={RegisterScreen}
         options={{ headerShown:false }}/>
 
+<Stack.Screen 
+        name="ClickedArgueScreen"
+        component={ClickedArgueScreen}
+        
+        options={{ headerShown:true,
+        headerTitle:"Discossions",
+        
+         }}/>
       </Stack.Navigator>
       </NavigationContainer>
 

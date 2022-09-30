@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
     {
         marginLeft:"auto",
         marginRight: "auto",
-        marginTop:"15%",
+        marginTop:"7%",
         fontSize:24,
         color:"white",
         fontWeight:"bold",      

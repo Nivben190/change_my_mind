@@ -1,27 +1,28 @@
 import React, { useState } from 'react'
 import  {styles} from "./Style"
-
 import { Button, Image, Text, TextInput, View } from 'react-native'
 import { registration } from '../../apo/authFuncs';
+import register from "./register.png";
 const RegisterScreen = ({navigation}) => {
  
  const [email,setEmail] =useState();
+ const [name,setName] =useState();
+
  const [password,setPassword] =useState();
- const  registerUser=()=> 
- {
+ const  registerUser=()=> registration(name,email,password,navigation);  
  
-   registration(email,password,navigation);
-    
-     
-  
-   
- }
 
  const navigateToLoginPage=()=> navigation.navigate("Login");
   return (
     <View style={styles.profileContainer}>
-    <Image style={styles.logo} source={{uri:"https://static.vecteezy.com/system/resources/thumbnails/005/484/042/small/dog-logo-illustration-free-vector.jpg"}}/>
-      <Text style={styles.Title}>Social Dog</Text>
+    <Image style={styles.logo} source={register}/>
+      <Text style={styles.Title}>Register Here</Text>
+      <View style={styles.InputContainer}>
+        <Text style={styles.InputDesc}>Name</Text>
+        <TextInput  
+         onChangeText={(textValue)=>setName(textValue)}
+         style={styles.Input} />
+      </View>
       <View style={styles.InputContainer}>
         <Text style={styles.InputDesc}>Email</Text>
         <TextInput  

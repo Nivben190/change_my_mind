@@ -4,14 +4,14 @@ import HomeScreen from '../screens/HomeScreen/HomeScreen';
 import LoginScreen from '../screens/LoginScreen/LoginScreen';
 import NotificationsScreen from '../screens/NotificationsScreen/NotificationsScreen';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import RegisterScreen from '../screens/RegisterScreen/RegisterScreen';
 import AddArgueScreen from '../screens/AddArgueScreen/AddArgueScreen';
-import UploadScreen from '../screens/AddArgueScreen/UploadScreen';
 import { styles } from '../screens/AddArgueScreen/Style';
+import { getCurrentUser } from '../apo/authFuncs';
+import ProfileScreen from '../screens/ProfileScreen/ProfileScreen';
 const Tab = createBottomTabNavigator();
 
 function ButtomTab() {
-
+   
   return (
     <Tab.Navigator>
       <Tab.Screen name="Home"
@@ -21,7 +21,7 @@ function ButtomTab() {
 
             }} 
        component={HomeScreen} />
-        <Tab.Screen
+        {getCurrentUser()&&<Tab.Screen
         
          name="AddArgue"
          
@@ -31,7 +31,7 @@ function ButtomTab() {
               tabBarIcon: () => (<MaterialCommunityIcons color={"blue"} style={styles.AddICon} name="plus-circle" size={40}  />)
 
             }} 
-       component={AddArgueScreen} />
+       component={AddArgueScreen} />}
       <Tab.Screen name="Notifications"
       options={{
               tabBarColor: "#009387",
@@ -39,14 +39,24 @@ function ButtomTab() {
 
             }} 
        component={NotificationsScreen} />
-      <Tab.Screen name="Login" 
+     {getCurrentUser()?<Tab.Screen name="Profile" 
+    
+    options={{
+              tabBarColor: "#009387",
+              tabBarIcon: () => (<MaterialCommunityIcons name="account" size={40}  />)
+
+            }} 
+      component={ProfileScreen} />:
+     <Tab.Screen name="Login" 
     
     options={{
               tabBarColor: "#009387",
               tabBarIcon: () => (<MaterialCommunityIcons name="login" size={40}  />)
 
             }} 
-      component={LoginScreen} />
+      component={LoginScreen} />}
+
+    
     </Tab.Navigator>
   );
 }

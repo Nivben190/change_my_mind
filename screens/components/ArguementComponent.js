@@ -1,19 +1,44 @@
-import React from 'react'
+import React,{useEffect, useState} from 'react'
 import { View ,Text} from 'react-native'
 import { StyleSheet } from 'react-native'
 import {Card } from 'react-native-paper';
-
+import { getCurrentUser } from '../../apo/authFuncs';
 const ArguementComponent = (props) => {
+ 
+
+  function navigateToPickedScreen()
+  {
+    const arguement ={
+      id:props.id,
+      category:props.argue.category,
+      title:props.argue.title,
+      numberOfLikes:props.argue.numberOfLikes,
+      numberOfUnlikes:props.argue.numberOfUnliked,
+      uploadedBy:props.argue.uplodedByName
+
+    }
+     props.navigation.navigate("ClickedArgueScreen",
+     {
+     
+      argue:{arguement}
+      
+     })
+  }
+
+
+
+  
+
   return (
-    <Card style={styles.arguContainer}> 
-    <Card.Title titleStyle={styles.title} title={props.category}/>
+    <Card onPress={navigateToPickedScreen} style={styles.arguContainer}> 
+    <Card.Title titleStyle={styles.title} title={props.argue.category}/>
     <Card.Content>
-     <Text style={styles.ArgueText}>{props.title}</Text>
+     <Text style={styles.ArgueText}>{props.argue.title}</Text>
     </Card.Content>
       <View>
 
       </View>
-    <Card.Cover source={{ uri:'https://iheartdogs.com/wp-content/uploads/2015/01/4577137586_5f4cf7fbd3_z-1.jpg' }} />
+    <Card.Cover source={{ uri:props.argue.image }} />
     
   </Card>
     
@@ -25,6 +50,8 @@ const styles = StyleSheet.create({
         width:"85%",
         borderRadius:"10%",
         marginTop:10,
+        marginTop: "5%",
+        marginBottom: "10%",
         marginLeft: "auto",
         marginRight: "auto",
         height:250,

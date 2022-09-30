@@ -3,7 +3,7 @@ import { View } from 'react-native'
 import  {styles} from "./Style"
 import { Button, Image, Text, TextInput } from 'react-native'
 import { getCurrentUser, signIn } from '../../apo/authFuncs';
-
+import loginBg from "./loginbg.png"
 
 
 
@@ -16,20 +16,14 @@ function navigateToRegisterPage()
  
 const [email,setEmail] =useState();
 const [password,setPassword] =useState();
- const  loginUser =async()=>
-{
-  
-   signIn(email,password,navigation)
-        
-  
-  
- 
-}
+
+ const  loginUser =async()=>signIn(email,password,navigation)
+
 
 
   return (
     <View style={styles.profileContainer}>
-    <Image style={styles.logo} source={{uri:"https://static.vecteezy.com/system/resources/thumbnails/005/484/042/small/dog-logo-illustration-free-vector.jpg"}}/>
+    <Image style={styles.logo} source={loginBg}/>
       <Text  style={styles.Title}>Login Here</Text>
       <View style={styles.InputContainer}>
         <Text style={styles.InputDesc}>Email</Text>

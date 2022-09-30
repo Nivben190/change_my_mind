@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
         width: 100,
         height:100,
         borderRadius:50,
-        marginTop: 150,
+        marginTop: "20%",
         marginLeft:"auto",
         marginRight:"auto",
     },

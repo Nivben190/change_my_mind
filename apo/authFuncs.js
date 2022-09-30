@@ -1,15 +1,19 @@
 // import * as firebase from "firebase";
-import { getAuth, createUserWithEmailAndPassword ,signOut,signInWithEmailAndPassword} from "firebase/auth";
+import { getAuth,updateProfile, createUserWithEmailAndPassword ,signOut,signInWithEmailAndPassword} from "firebase/auth";
 import "firebase/firestore";
 import { db } from "../firebase";
 import {Alert} from "react-native";
 
-export async function registration(email, password,navigation) {
+export async function registration(name,email, password,navigation) {
     const auth = getAuth();
-
+    
      createUserWithEmailAndPassword(auth, email, password)
-     .then((userCredential) => {
+     .then( (userCredential) => {
        const user = userCredential.user;
+     
+      updateProfile(auth.currentUser, {
+        displayName:name
+      })      
        navigation.navigate("Login")
 
 
@@ -39,9 +43,10 @@ export async function signIn(email, password,navigation) {
       });
 }
 
-export async function loggingOut() {
+export async function loggingOut(navigaqtion) {
     const auth = getAuth();
     signOut(auth).then(() => {
+      navigaqtion.navigate("Home")
       // Sign-out successful.
     }).catch((error) => {
       // An error happened.

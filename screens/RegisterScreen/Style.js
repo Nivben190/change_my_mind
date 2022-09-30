@@ -8,10 +8,10 @@ const styles = StyleSheet.create({
     },
     logo:
     {
-        width: 100,
-        height:100,
-        borderRadius:50,
-        marginTop: 50,
+        width: 120,
+        height: 150,
+        borderRadius:60,
+        marginTop: "10%",
         marginLeft:"auto",
         marginRight:"auto",
     },
