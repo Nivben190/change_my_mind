@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text } from 'react-native';
-import { getLengthOfDiscussions, getLimitedDb, getNumberOfDiscussionsByUser } from '../../services/dbServices';
+import { addLikeToDiscussion, addUnlikeToDiscussion, getLengthOfDiscussions, getLimitedDb, getNumberOfDiscussionsByUser } from '../../services/dbServices';
 import ArguementComponent from '../components/ArguementComponent';
 import {styles} from "./Style"
 import { FlatList } from 'react-native';
+import { useIsFocused } from "@react-navigation/native"; 
+
 const HomeScreen = ({navigation}) => {
  
+  const isFocused = useIsFocused();
   const[counter,setCounter]=useState(2);
    const [arguement,setArguement]=useState([]);
    async function fetchDb()
@@ -21,10 +24,10 @@ const HomeScreen = ({navigation}) => {
       //refactoring use effect
     useEffect(() => 
     { 
-       fetchDb(); 
-    },[]);
     
-
+       fetchDb(); 
+    },);
+    
   return (
     <View >
     <Text style={styles.Header}> Feed </Text>
@@ -33,9 +36,11 @@ const HomeScreen = ({navigation}) => {
       renderItem={({item,index}) => <ArguementComponent
         key={index} 
         navigation={navigation} 
-       argue={item}
+        argue={item}
         id={item.id}
-         image={item.image}
+        likeArgue={()=>addLikeToDiscussion(item.id)}
+        unlikeArgue={()=>addUnlikeToDiscussion(item.id)}
+        image={item.image}
       />}
       keyExtractor={(item,index) => index.toString()}
       onScrollEndDrag={()=>{setCounter(counter+1);fetchDb();}}

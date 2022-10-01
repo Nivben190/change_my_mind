@@ -92,9 +92,6 @@ export async function addLikeToDiscussion(discussionId)
         });   
      }
   });
-  
-   
-
    
 }
 //add unlike to the discussion
@@ -105,7 +102,7 @@ export async function addUnlikeToDiscussion(discussionId)
     if(doci.data().id==discussionId)
     {
       updateDoc(doc(db, "discussions", doci.id), {
-        numberOfLiked: doci.data().numberOfUnliked+1
+        numberOfUnliked: doci.data().numberOfUnliked+1
       });   
     }
   });

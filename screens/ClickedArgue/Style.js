@@ -2,15 +2,22 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
     TitleContainer:
     {
-          width: "100%",
-            height: "30%",
+           width: "100%",
+            height: "20%",
             backgroundColor: "#fff",
-            borderRadius:20
+            borderRadius:20,
+    },
+    image:
+    {
+        width: "100%",
+        height: "100%",
+        zIndex: -1,
+
     },
     Title:{
         fontSize:30,
         textAlign: 'center',
-       marginTop:"20%",
+       marginTop:"5%",
         fontWeight:"bold",
     },
     uplodedBy:
@@ -25,7 +32,7 @@ const styles = StyleSheet.create({
     },
     CategoryContainer:
     { 
-        marginTop:"15%",
+        marginTop:"20%",
         marginLeft: "auto",
         marginRight: "auto",
       
@@ -34,15 +41,16 @@ const styles = StyleSheet.create({
     {
         fontSize:30,
         fontWeight:"bold",
-        color: "gray"
+        color: "gray",
+        marginTop:"5%",
 
     },
     category:
     {
         fontSize:20,
         fontWeight:"bold",
-        marginTop:"5%",
-        marginLeft:"10%",
+        marginTop:"2%",
+        marginLeft:"auto",
         marginRight:"auto",
          
 
@@ -89,6 +97,30 @@ const styles = StyleSheet.create({
         marginTop:"15%",
         marginLeft:"40%",
         marginRight:"auto",
+    },
+    commentsContainer:
+    {
+        marginTop:"10%",
+        marginLeft: "auto",
+        marginRight: "auto",    
+    },
+    commentsTitle:
+    {
+        fontSize:30,
+        fontWeight:"bold",
+        color: "gray",
+       textAlign:"center",
+        marginTop:"2%"
+    },
+    comments:
+    {
+        fontSize:20,
+        fontWeight:"bold",
+        marginTop:"5%",
+        marginLeft:"10%",
+        marginRight:"auto",
+        textAlign:"center",
+        color: "white"
     },
 
 
