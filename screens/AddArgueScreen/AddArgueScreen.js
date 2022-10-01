@@ -3,13 +3,12 @@ import { View,Text,TextInput,Button,StyleSheet,TouchableOpacity} from 'react-nat
 import {styles} from "./Style.js"
 import SelectDropdown from 'react-native-select-dropdown'
 import { categories } from './cateroiesForDropdown.js'
-import { addDiscussions } from '../../services/dbServices.js'
+import { addDiscussions,getLengthOfDiscussions } from '../../services/dbServices.js'
 import { getCurrentUser } from '../../apo/authFuncs.js'
 import * as ImagePicker from 'expo-image-picker';
 
 const AddArgueScreen = ({navigation}) => {
     
-  const [image, setImage] = useState(null);
   const takePhotoFromCamera = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
       
@@ -20,14 +19,13 @@ const AddArgueScreen = ({navigation}) => {
     });
 
     if(!result.cancelled) {
-    
       setArguement( {...arguement,image:result.uri});
     }
-    
   };
 
    //arguement state init
     const [arguement,setArguement] = useState({
+        id:0,
         title:"",
         description:"",
         category:"",
@@ -59,8 +57,12 @@ const AddArgueScreen = ({navigation}) => {
   //add argue to firebase
   async function addArgueToFireBase()
   {
+    getLengthOfDiscussions().then((counter)=>{
+      setArguement({...arguement,id:counter+1});
+    });
       const argueToAdd=
       {
+        id:arguement.id,
         title:arguement.title,
         category:arguement.category,
         description:arguement.desc,
@@ -69,15 +71,16 @@ const AddArgueScreen = ({navigation}) => {
         numberOfLikes:0,
         numberOfUnliked:0,
         uploadDate:new Date(),
-        image:arguement.image
+        image:arguement.image,
+        comments:[]
      }
         
-       if(checkIfCanUpload())
-       {
-         alert("you must fill all the inputs");
+        if(argueToAdd.image===""|| argueToAdd.title===undefined||argueToAdd.description===undefined)
+        {
+          alert("you must fill all the inputs");
          return;
-       }
-      await addDiscussions(argueToAdd);
+        }
+       await addDiscussions(argueToAdd);
       resetArgueInputs() 
   }
 

@@ -14,7 +14,8 @@ const ArguementComponent = (props) => {
       title:props.argue.title,
       numberOfLikes:props.argue.numberOfLikes,
       numberOfUnlikes:props.argue.numberOfUnliked,
-      uploadedBy:props.argue.uplodedByName
+      uploadedBy:props.argue.uplodedByName,
+      comments:props.argue.comments,
 
     }
      props.navigation.navigate("ClickedArgueScreen",
@@ -24,10 +25,6 @@ const ArguementComponent = (props) => {
       
      })
   }
-
-
-
-  
 
   return (
     <Card onPress={navigateToPickedScreen} style={styles.arguContainer}> 

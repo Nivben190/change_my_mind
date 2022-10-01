@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text } from 'react-native';
-import { getLimitedDb, getNumberOfDiscussionsByUser } from '../../services/dbServices';
+import { getLengthOfDiscussions, getLimitedDb, getNumberOfDiscussionsByUser } from '../../services/dbServices';
 import ArguementComponent from '../components/ArguementComponent';
 import {styles} from "./Style"
 import { FlatList } from 'react-native';
-import { getCurrentUser } from '../../apo/authFuncs';
 const HomeScreen = ({navigation}) => {
  
   const[counter,setCounter]=useState(2);
@@ -22,7 +21,7 @@ const HomeScreen = ({navigation}) => {
       //refactoring use effect
     useEffect(() => 
     { 
-       fetchDb();   
+       fetchDb(); 
     },[]);
     
 
@@ -35,7 +34,7 @@ const HomeScreen = ({navigation}) => {
         key={index} 
         navigation={navigation} 
        argue={item}
-        id={index}
+        id={item.id}
          image={item.image}
       />}
       keyExtractor={(item,index) => index.toString()}
