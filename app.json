@@ -10,6 +10,10 @@
       "clientToken": "8bf039407e362a44712f67f9847088c9",
       "displayName": "changemymind"
     },
+    "expo-facebook",
+    {
+      "userTrackingPermission": false
+    },
     "expo-image-picker",
     {
       "photosPermission": "The app accesses your photos to let you share them with your friends."

@@ -1,20 +1,18 @@
 // import * as firebase from "firebase";
-import { getAuth,updateProfile, createUserWithEmailAndPassword ,signOut,signInWithEmailAndPassword} from "firebase/auth";
+import {getAuth,updateProfile, createUserWithEmailAndPassword ,signOut,signInWithEmailAndPassword} from "firebase/auth";
 import "firebase/firestore";
-import { db } from "../firebase";
-import {Alert} from "react-native";
-
+import { setDoc } from "firebase/firestore";
 export async function registration(name,email, password,navigation) {
     const auth = getAuth();
     
      createUserWithEmailAndPassword(auth, email, password)
      .then( (userCredential) => {
-       const user = userCredential.user;
-     
+       const user = userCredential.user;      
       updateProfile(auth.currentUser, {
-        displayName:name
+        displayName:name,
       })      
-       navigation.navigate("Login")
+    
+      navigation.navigate("Home")
 
 
      })
@@ -25,6 +23,20 @@ export async function registration(name,email, password,navigation) {
      
      });
  
+}
+//edit profile 
+export async function updateProfileFunc(displayName, photoURL,phoneNumber, navigation) {
+    const auth = getAuth();
+    updateProfile(auth.currentUser, {
+        displayName: displayName ? displayName:auth.currentUser.displayName,
+        photoURL: photoURL ? photoURL:auth.currentUser.photoURL,
+        phoneNumber:phoneNumber ? phoneNumber:auth.currentUser.phoneNumber,
+    }).then(() => {
+      navigation.navigate('Profile');
+      
+    }).catch((error) => {
+        alert(error);
+    });
 }
 
 export async function signIn(email, password,navigation) {

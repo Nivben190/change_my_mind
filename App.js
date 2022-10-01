@@ -10,6 +10,7 @@ import RegisterScreen from './screens/RegisterScreen/RegisterScreen';
 import ButtomTab from './Navigations/ButtomTab';
 import AddArgueScreen from './screens/AddArgueScreen/AddArgueScreen';
 import ClickedArgueScreen from './screens/ClickedArgue/ClickedArgueScreen';
+import EditProfile from './screens/ProfileScreen/EditProfile';
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -60,6 +61,19 @@ export default function App() {
         
         options={{ headerShown:true,
         headerTitle:"Discossions",
+        
+         }}/>
+         <Stack.Screen 
+        name="EditProfileScreen"
+        component={EditProfile}     
+        options={{ headerShown:true,
+        headerTitle:"Edit Profile",
+        
+         }}/>
+          <Stack.Screen 
+        name="Login"
+        component={LoginScreen}     
+        options={{ headerShown:false,
         
          }}/>
       </Stack.Navigator>

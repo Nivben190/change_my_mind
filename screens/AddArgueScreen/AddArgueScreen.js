@@ -71,12 +71,12 @@ const AddArgueScreen = ({navigation}) => {
         uploadDate:new Date(),
         image:arguement.image
      }
-       //check if the user is logged in
-        if(!user)
-        {
-          alert("you must be logged in to add argue");
-          return;
-        }
+        
+       if(checkIfCanUpload())
+       {
+         alert("you must fill all the inputs");
+         return;
+       }
       await addDiscussions(argueToAdd);
       resetArgueInputs() 
   }

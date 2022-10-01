@@ -1,15 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, ScrollView } from 'react-native';
-import { getDb, getLimitedDb } from '../../services/dbServices';
+import { View, Text } from 'react-native';
+import { getLimitedDb, getNumberOfDiscussionsByUser } from '../../services/dbServices';
 import ArguementComponent from '../components/ArguementComponent';
 import {styles} from "./Style"
-import { collection, addDoc, getDocs } from "firebase/firestore"; 
-import { db } from '../../firebase';
-import { getCurrentUser, loggingOut } from '../../apo/authFuncs';
 import { FlatList } from 'react-native';
+import { getCurrentUser } from '../../apo/authFuncs';
 const HomeScreen = ({navigation}) => {
  
-  const [data, setData] = useState([]);
   const[counter,setCounter]=useState(2);
    const [arguement,setArguement]=useState([]);
    async function fetchDb()
@@ -25,7 +22,7 @@ const HomeScreen = ({navigation}) => {
       //refactoring use effect
     useEffect(() => 
     { 
-      fetchDb();      
+       fetchDb();   
     },[]);
     
 
@@ -43,21 +40,7 @@ const HomeScreen = ({navigation}) => {
       />}
       keyExtractor={(item,index) => index.toString()}
       onScrollEndDrag={()=>{setCounter(counter+1);fetchDb();}}
-
-     
-    
-
-      />
-     {/* {arguement.map((arg,index) => <ArguementComponent
-     key={index} 
-     navigation={navigation} 
-     argue={arg}
-     id={index}
-     image={arg.image}
-    
-     />)} */}
-  
-
+    />
   </View>
   )
 }

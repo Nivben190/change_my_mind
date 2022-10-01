@@ -3,16 +3,14 @@ import  {styles} from "./Style"
 import { Button, Image, Text, TextInput, View } from 'react-native'
 import { registration } from '../../apo/authFuncs';
 import register from "./register.png";
-const RegisterScreen = ({navigation}) => {
+const RegisterScreen = ({navigation,navigation: { goBack }}) => {
  
  const [email,setEmail] =useState();
  const [name,setName] =useState();
 
  const [password,setPassword] =useState();
  const  registerUser=()=> registration(name,email,password,navigation);  
- 
-
- const navigateToLoginPage=()=> navigation.navigate("Login");
+ const navigateToLoginPage=()=> goBack();
   return (
     <View style={styles.profileContainer}>
     <Image style={styles.logo} source={register}/>

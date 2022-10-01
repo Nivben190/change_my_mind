@@ -2,6 +2,7 @@ import * as Device from 'expo-device';
 import * as Notifications from 'expo-notifications';
 import React, { useState, useEffect, useRef } from 'react';
 import { Text, View, Button, Platform } from 'react-native';
+import { getCurrentUser } from '../../apo/authFuncs';
 
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
@@ -16,6 +17,12 @@ export default function NotificationScreen() {
   const [notification, setNotification] = useState(false);
   const notificationListener = useRef();
   const responseListener = useRef();
+
+  //useEffect to get current user
+  useEffect(() => {
+    const user = getCurrentUser();
+    alert(JSON.stringify(user));
+  }, []);
 
   useEffect(() => {
     registerForPushNotificationsAsync().then(token => setExpoPushToken(token));
