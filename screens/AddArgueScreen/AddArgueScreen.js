@@ -8,20 +8,7 @@ import { getCurrentUser } from '../../apo/authFuncs.js'
 import * as ImagePicker from 'expo-image-picker';
 
 const AddArgueScreen = ({navigation}) => {
-    
-  const takePhotoFromCamera = async () => {
-    let result = await ImagePicker.launchImageLibraryAsync({
-      
-      mediaTypes: ImagePicker.MediaTypeOptions.All,
-      allowsEditing: true,
-      aspect: [4, 3],
-      quality: 1,
-    });
-
-    if(!result.cancelled) {
-      setArguement( {...arguement,image:result.uri});
-    }
-  };
+   
 
    //arguement state init
     const [arguement,setArguement] = useState({
@@ -75,12 +62,12 @@ const AddArgueScreen = ({navigation}) => {
         comments:[]
      }
         
-        if(argueToAdd.image===""|| argueToAdd.title===undefined||argueToAdd.description===undefined)
+        if(!checkIfCanUpload())
         {
           alert("you must fill all the inputs");
          return;
         }
-       await addDiscussions(argueToAdd);
+      await addDiscussions(argueToAdd);
       resetArgueInputs() 
   }
 
@@ -88,7 +75,7 @@ const AddArgueScreen = ({navigation}) => {
   // function to check if the user can upload the argueToAdd
   function checkIfCanUpload()
   {
-    if(arguement.title.length>0 && arguement.description.length>0 )
+    if(arguement.title!==undefined||arguement.description!==undefined )
     {
       return true;
     }
@@ -106,9 +93,6 @@ const AddArgueScreen = ({navigation}) => {
   return (
    <View  style={styles.profileContainer}>
     <Text  style={styles.AddArgueTitle}>Always right? Show Me Here</Text>
-    <TouchableOpacity style={stylesimage.selectButton} onPress={takePhotoFromCamera}>
-        <Text  style={stylesimage.buttonText}>Pick an image</Text>
-      </TouchableOpacity>
      <View style={styles.InputContainer}>
         <Text style={styles.InputDesc}>Title</Text>
         <TextInput       

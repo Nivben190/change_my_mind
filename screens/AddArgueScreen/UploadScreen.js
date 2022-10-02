@@ -14,11 +14,9 @@ const UploadScreen = () => {
    
  //upload image to firebase with image picker
   const [image, setImage] = useState(null);
-  const [uploading, setUploading] = useState(false);
 
   const takePhotoFromCamera = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
-      
       mediaTypes: ImagePicker.MediaTypeOptions.All,
       allowsEditing: true,
       aspect: [4, 3],

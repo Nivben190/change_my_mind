@@ -4,22 +4,15 @@ import  {styles} from "./Style"
 import { Button, Image, Text, TextInput } from 'react-native'
 import { getCurrentUser, signIn } from '../../apo/authFuncs';
 import loginBg from "./loginbg.png"
-
-
-
 const LoginScreen =  ({navigation}) => {
 
-function navigateToRegisterPage()
-{
-  navigation.navigate("RegisterScreen");
-}
- 
-const [email,setEmail] =useState();
-const [password,setPassword] =useState();
-
+  //function to login and navigate to Register screen
+ const navigateToRegisterPage = () => navigation.navigate("RegisterScreen");
  const  loginUser =async()=>signIn(email,password,navigation)
 
-
+ //state variables
+const [email,setEmail] =useState();
+const [password,setPassword] =useState();
 
   return (
     <View style={styles.profileContainer}>

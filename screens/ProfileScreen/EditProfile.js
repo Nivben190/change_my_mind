@@ -5,7 +5,6 @@ import { getCurrentUser, updateProfileFunc } from '../../apo/authFuncs';
 import editProfile from './editprofile.png';
 import { styles } from './Style';
 import * as ImagePicker from 'expo-image-picker';
-import { getNumberOfDiscussionsByUser } from '../../services/dbServices';
 
 const EditProfile = ({ navigation }) => {
     const [user, setUser] = useState(null);
@@ -17,13 +16,11 @@ const EditProfile = ({ navigation }) => {
     //useEffect to get current user
     useEffect(() => {
         const user = getCurrentUser();
-        
         setUser(user);
     }, []);
     //update profile
     const updateProfile = () => {     
       updateProfileFunc(profile.displayName, profile.photoURL,profile.phoneNumber, navigation);
-    
     }
     //set profile image 
     const setProfileImage = async () => {
@@ -48,7 +45,7 @@ const EditProfile = ({ navigation }) => {
             <View>
                 <Image source={editProfile} style={styles.editProfileImage} />
                 <TouchableOpacity style={styles.selectButton} onPress={setProfileImage}>
-        <Text  style={styles.buttonText}>Edit Profile Image</Text>
+                <Text  style={styles.buttonText}>Edit Profile Image</Text>
       </TouchableOpacity>
                 <TextInput
                     style={styles.userName}

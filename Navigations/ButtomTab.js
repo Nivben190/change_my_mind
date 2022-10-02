@@ -32,13 +32,13 @@ function ButtomTab() {
 
             }} 
        component={AddArgueScreen} />}
-      <Tab.Screen name="Notifications"
+      {/* <Tab.Screen name="Notifications"
       options={{
               tabBarColor: "#009387",
               tabBarIcon: () => (<MaterialCommunityIcons name="notification-clear-all" size={40}  />)
 
             }} 
-       component={NotificationsScreen} />
+       component={NotificationsScreen} /> */}
      {getCurrentUser()?<Tab.Screen name="Profile" 
     
     options={{

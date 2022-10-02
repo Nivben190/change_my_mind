@@ -1,1 +1,1 @@
-export const categories = ["Animals", "Art", "Computers"]
+export const categories = ["Animals", "Art", "Computers","Sports","Gaming","Movies","Music"]

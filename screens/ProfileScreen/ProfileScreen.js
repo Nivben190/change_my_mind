@@ -8,6 +8,7 @@ import { useIsFocused } from "@react-navigation/native";
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const ProfileScreen = ({navigation}) => {
+  //state variables
     const [user,setUser]=useState(null);
     const isFocused = useIsFocused();
     const [numberOfDiscussions,setNumberOfDiscussions]=useState(0);
@@ -40,8 +41,8 @@ const ProfileScreen = ({navigation}) => {
   return (
     <View>
     <View>
-     {user&&<Image source={user.photoURL?{uri:user.photoURL}:userimg} style={styles.image} />}
      <View style={styles.container}>
+     {user&&<Image source={user.photoURL?{uri:user.photoURL}:userimg} style={styles.image} />}
       <View style={styles.userNameContainer}>
       <Text style={styles.userNameTitle}>User Name</Text>
       <Text style={styles.userName}>{user&&user.displayName}</Text>

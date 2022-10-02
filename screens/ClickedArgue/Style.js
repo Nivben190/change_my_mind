@@ -1,5 +1,34 @@
 import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
+  
+    addComment:
+    {
+        fontSize:30,
+        fontWeight:"bold",
+        color:"black",
+        marginLeft:10,
+    },
+    input:
+    {
+        width:"80%",
+        height:50,
+        borderWidth:1,
+        borderColor:"grey",
+        borderRadius:10,
+        marginTop:"30%",
+        marginBottom:10,
+        padding:10,
+        marginLeft:"auto",
+        marginRight:"auto",
+        textAlign:"center"
+    },
+    buttonsContainer:
+    {
+        flexDirection:"row",
+        justifyContent:"space-around",
+        width:"100%",
+        marginTop:"10%"
+    },
     TitleContainer:
     {
            width: "100%",

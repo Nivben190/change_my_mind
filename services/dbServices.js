@@ -1,13 +1,13 @@
-import { collection, addDoc,getDoc,doc, getDocs ,query,limit,updateDoc} from "firebase/firestore"; 
+import { collection, addDoc,getDoc,doc, getDocs,query,limit,updateDoc} from "firebase/firestore"; 
 import { db } from '../firebase';
+
+
 // add a new discussion to the database
 export async function  addDiscussions(itemToAdd)
     {   
 
        await addDoc(collection(db, "discussions"),itemToAdd);
-  }
-
-
+   }
   // get all the data from the database firebase
   export async function getDb()
 {
@@ -111,17 +111,21 @@ export async function addUnlikeToDiscussion(discussionId)
 //add comment to discussion comments ArrayFromDbFromFireBase
 export async function addCommentToDiscussion(discussionId,comment)
 {
+  var commentsArray=[];
+
   const querySnapshot = await getDocs(collection(db, "discussions"));
   querySnapshot.forEach((doci) => {
     if(doci.data().id==discussionId)
     {
+      commentsArray=doci.data().comments;
+      commentsArray.push(comment);
       updateDoc(doc(db, "discussions", doci.id), {
-        comments: doci.data().comments.concat(comment)
+        comments:commentsArray
       });   
     }
   });
 }
-//get all comments from discussion comments by id 
+//get all comments from di  scussion comments by id 
 export async function getCommentsFromDiscussion(discussionId)
 {
   const querySnapshot = await getDocs(collection(db, "discussions"));
