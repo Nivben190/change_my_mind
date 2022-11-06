@@ -44,4 +44,5 @@ To Run On Your Computer, clone my repo and run npm start
 # Edit Profile Page
 <img width="1440" alt="צילום מסך 2022-10-02 ב-4 35 12 אח׳" src="https://user-images.githubusercontent.com/96342824/193457113-1ab09390-20f7-4b95-8bf4-2eaf894838c0.png">
 
+<img width="357" alt="change" src="https://user-images.githubusercontent.com/96342824/200188145-63815797-e18d-4b80-b7f5-afdfae8380a5.png">
 
